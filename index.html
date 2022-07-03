@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+    <link rel="stylesheet" href="src/styles.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="split left">
+        <div class="header-left">
+            <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <div class="header-right">
+            <img class="weather-header" src="./images/WeatherIcon1.png" alt="weather1">
+            <p class="value-header">27</p>
+            <p class="temperture-header">°C</p>
+            <p class="date-header">17th Jun 21</p>
+            <p class="time-header">Thurday | 2:45 am</p>
+        </div>
+        <div class="owl-carousel owl-theme">
+            <div class="item">
+                <p class="item-temperture">24°C</p>
+                <img src="./images/WeatherIcon1.png">
+                <p class="item-day">Mon</p>
+            </div>
+            <div class="item">
+                <p class="item-temperture">14°C</p>
+                <img src="./images/WeatherIcon2.png">
+                <p class="item-day">Tue</p>
+            </div>
+            <div class="item">
+                <p class="item-temperture">20°C</p>
+                <img src="./images/WeatherIcon3.png">
+                <p class="item-day">Wed</p>
+            </div>
+            <div class="item">
+                <p class="item-temperture">17°C</p>
+                <img src="./images/WeatherIcon4.png">
+                <p class="item-day">Thur</p>
+            </div>
+            <div class="item">
+                <p class="item-temperture">24°C</p>
+                <img src="./images/WeatherIcon5.png">
+                <p class="item-day">Fri</p>
+            </div>
+            <div class="item">
+                <p class="item-temperture">22°C</p>
+                <img src="./images/WeatherIcon6.png">
+                <p class="item-day">Sat</p>
+            </div>
+            <div class="item">
+                <p class="item-temperture">27°C</p>
+                <img src="./images/WeatherIcon3.png">
+                <p class="item-day">Sun</p>
+            </div>
+        </div>
+    </div>
+    <div class="split right">
+        <div class="container">
+            <input id="search-text-input" type="text" placeholder="Search for a city">
+            <div class="search"></div>
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-geo-alt" viewBox="0 0 300 300">
+                    <path
+                        d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+            </div>
+            <div class="text-search">Country, city</div>
+        </div>
+        <div class="cards">
+            <div class="extra-time-sunrise">
+                <p class="extra-time-sunrise-text">Sunrise</p>
+                <p class="card-time-start">6:05 AM</p>
+                <img class="extra-time" src="./images/sunrise.svg">
+                <p class="card-time-end">7:00 AM</p>
+            </div>
+            <div class="extra-time-golden-hour">
+                <p class="extra-time-golden-hour-text">Golden Hour</p>
+                <p class="card-time-start">12:00 PM</p>
+                <img class="extra-time-golden" src="./images/goldenHour.svg">
+                <p class="card-time-end">13:00 PM</p>
+            </div>
+            <div class="extra-time-sunset">
+                <p class="extra-time-sunset-text">Sunset</p>
+                <p class="card-time-start">6:00 PM</p>
+                <img class="extra-time" src="./images/sunset.svg">
+                <p class="card-time-end">7:30 PM</p>
+            </div>
+        </div>
+        <div class="footer">
+            <p class="footer-text">coded by Ben Sedrine Donia</p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="/src/index.js"></script>
+</body>
+
+</html>
