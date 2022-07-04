@@ -57,18 +57,18 @@ let container = document.querySelector(".container");
 container.addEventListener("keypress", search);
 
 //* feature 3: weather api => display the name of the city and its current temperture, humidity and wind
-function weather(response) {
-  document.querySelector("div.text-search").innerHTML = response.data.name;
-  document.querySelector("div.text-tempeture").innerHTML =
-    response.data.main.temp;
+function weatherResponse(response){
+  console.log(response.data.name);
+  let temperatureResponse = document.querySelector("#temperature");
+  temperatureResponse.innerHTML = Math.round(response.data.main.temp);
+  let cityResponse = document.querySelector("#city");
+  cityResponse.innerHTML = response.data.name;
 }
-function apiCity(city) {
-  var apiKey = "30e0e5bb453abedea9e4644fe840ec2e";
-  var apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
-  axios.get(`${apiUrl}&q=${cityValue}&appid=${apiKey}`).then(weather);
-}
-function searchCity(event) {
-  event.preventDefault();
-  var city = document.querySelector("input.form-control").value;
-  apiCity(city);
-}
+
+let apiKey = "30e0e5bb453abedea9e4644fe840ec2e";
+ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}&units=metric`;
+
+
+ axios.get(apiUrl).then(weatherResponse);
+
+

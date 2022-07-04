@@ -31,7 +31,8 @@
         </div>
         <div class="header-right">
             <img class="weather-header" src="./images/WeatherIcon1.png" alt="weather1">
-            <p class="value-header">27</p>
+            <p id="temperature" class="value-header">27</p>
+            <!-- this temperature -->
             <p class="temperture-header">°C</p>
             <p class="date-header">17th Jun 21</p>
             <p class="time-header">Thurday | 2:45 am</p>
@@ -85,7 +86,10 @@
                     <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                 </svg>
             </div>
-            <div class="text-search">Country, city</div>
+            <div class="text-search">
+                <strong id="city">Country, city</strong>
+                <!-- this is the city -->
+            </div>
         </div>
         <div class="cards">
             <div class="extra-time-sunrise">
