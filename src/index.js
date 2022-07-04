@@ -25,7 +25,7 @@ $(".owl-carousel").owlCarousel({
     },
   },
 });
-//* feature 1
+//* feature 1: display the current day info
 let feature1 = document.querySelector("p.time-header");
 let days = [
   "Sunday",
@@ -39,9 +39,9 @@ let days = [
 let day = days[new Date().getDay()];
 let date = new Date();
 let hours = date.getHours();
-let minutes = ("0" + date.getMinutes()).slice(-2); // i added 0 before minutes if less than 10 to make it look like 00:00
+let minutes = ("0" + date.getMinutes()).slice(-2); // I added 0 before minutes if less than 10 to make it look like 00:00
 feature1.innerHTML = `${day} | ${hours}:${minutes}`;
-//* feature 2
+//* feature 2: display the city name
 function search(event) {
   let search = document.querySelector("input.search");
   if (event.keyCode === 13) {
@@ -56,7 +56,7 @@ function search(event) {
 let container = document.querySelector(".container");
 container.addEventListener("keypress", search);
 
-//# feature : weather api => display the name of the city and its current temperture
+//* feature 3: weather api => display the name of the city and its current temperture, humidity and wind
 function weather(response) {
   document.querySelector("div.text-search").innerHTML = response.data.name;
   document.querySelector("div.text-tempeture").innerHTML =
