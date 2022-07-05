@@ -58,11 +58,17 @@ container.addEventListener("keypress", search);
 
 //* feature 3: weather api => display the name of the city and its current temperture, humidity and wind
 function weatherResponse(response){
-  console.log(response.data.name);
+  console.log(response.data);
   let temperatureResponse = document.querySelector("#temperature");
-  temperatureResponse.innerHTML = Math.round(response.data.main.temp);
   let cityResponse = document.querySelector("#city");
+  let descriptionResponse = document.querySelector("#description");
+  let humidityResponse = document.querySelector("#humidity");
+  let windResponse = document.querySelector("#wind");
+  temperatureResponse.innerHTML = Math.round(response.data.main.temp);
   cityResponse.innerHTML = response.data.name;
+  descriptionResponse.innerHTML = response.data.weather[0].description;
+  humidityResponse.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  windResponse.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}km/h`;
 }
 
 let apiKey = "30e0e5bb453abedea9e4644fe840ec2e";
