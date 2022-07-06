@@ -57,24 +57,77 @@ let container = document.querySelector(".container");
 container.addEventListener("keypress", search);
 
 //* feature 3: weather api => display the name of the city and its current temperture, humidity and wind
-function weatherResponse(response){
+function weatherResponse(response) {
   console.log(response.data);
   let temperatureResponse = document.querySelector("#temperature");
   let cityResponse = document.querySelector("#city");
   let descriptionResponse = document.querySelector("#description");
   let humidityResponse = document.querySelector("#humidity");
   let windResponse = document.querySelector("#wind");
+  let imageWeather = document.querySelector("#weather-img");
   temperatureResponse.innerHTML = Math.round(response.data.main.temp);
   cityResponse.innerHTML = response.data.name;
   descriptionResponse.innerHTML = response.data.weather[0].description;
   humidityResponse.innerHTML = `Humidity: ${response.data.main.humidity}%`;
-  windResponse.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}km/h`;
+  windResponse.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}Km/H`;
+//# change the image for each weather description
+  switch (response.data.weather[0].description) {
+    case "clear sky":
+      imageWeather.setAttribute(
+        "src",
+        "http://openweathermap.org/img/wn/01d@2x.png"
+      );
+      break;
+    case "few clouds":
+      imageWeather.setAttribute(
+        "src",
+        "http://openweathermap.org/img/wn/02d@2x.png"
+      );
+      break;
+    case "scattered clouds":
+      imageWeather.setAttribute(
+        "src",
+        "http://openweathermap.org/img/wn/03d@2x.png"
+      );
+      break;
+    case "broken clouds":
+      imageWeather.setAttribute(
+        "src",
+        "http://openweathermap.org/img/wn/04d@2x.png"
+      );
+      break;
+    case "shower rain":
+      imageWeather.setAttribute(
+        "src",
+        "http://openweathermap.org/img/wn/09d@2x.png"
+      );
+      break;
+    case "rain":
+      imageWeather.setAttribute(
+        "src",
+        "http://openweathermap.org/img/wn/10d@2x.png"
+      );
+      break;
+    case "thunderstorm":
+      imageWeather.setAttribute(
+        "src",
+        "http://openweathermap.org/img/wn/11d@2x.png"
+      );
+      break;
+    case "snow":
+      imageWeather.setAttribute(
+        "src",
+        "http://openweathermap.org/img/wn/13d@2x.png"
+      );
+      break;
+    case "mist":
+      imageWeather.setAttribute(
+        "src",
+        "http://openweathermap.org/img/wn/50d@2x.png"
+      );
+  }
 }
-
 let apiKey = "30e0e5bb453abedea9e4644fe840ec2e";
- let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}&units=metric`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}&units=metric`;
 
-
- axios.get(apiUrl).then(weatherResponse);
-
-
+axios.get(apiUrl).then(weatherResponse);
