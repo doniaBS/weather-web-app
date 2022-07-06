@@ -43,17 +43,15 @@ let minutes = ("0" + date.getMinutes()).slice(-2); // I added 0 before minutes i
 feature1.innerHTML = `${day} | ${hours}:${minutes}`;
 //* feature 2: display the city name
 function search(event) {
-  let search = document.querySelector("input.search");
   if (event.keyCode === 13) {
     // key code of the keybord key
     event.preventDefault();
-    let searchInput = document.querySelector("input#search-text-input");
-    searchInput.innerHTML = `hello`;
-    let text = document.querySelector("div.text-search");
+    let searchInput = document.querySelector("#search-text-input");
+    let text = document.querySelector("#city");
     text.innerHTML = `${searchInput.value}`;
   }
 }
-let container = document.querySelector(".container");
+let container = document.querySelector("#search-container");
 container.addEventListener("keypress", search);
 
 //* feature 3: weather api => display the name of the city and its current temperture, humidity and wind
