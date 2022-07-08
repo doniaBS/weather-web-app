@@ -41,18 +41,7 @@ let date = new Date();
 let hours = date.getHours();
 let minutes = ("0" + date.getMinutes()).slice(-2); // I added 0 before minutes if less than 10 to make it look like 00:00
 feature1.innerHTML = `${day} | ${hours}:${minutes}`;
-//* feature 2: display the city name
-function search(event) {
-  if (event.keyCode === 13) {
-    // key code of the keybord key
-    event.preventDefault();
-    let searchInput = document.querySelector("#search-text-input");
-    let text = document.querySelector("#city");
-    text.innerHTML = `${searchInput.value}`;
-  }
-}
-let container = document.querySelector("#search-container");
-container.addEventListener("keypress", search);
+
 
 //* feature 3: weather api => display the name of the city and its current temperture, humidity and wind
 function weatherResponse(response) {
@@ -68,10 +57,23 @@ function weatherResponse(response) {
   descriptionResponse.innerHTML = response.data.weather[0].description;
   humidityResponse.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   windResponse.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}Km/H`;
-//# change the image for each weather description
   imageWeather.setAttribute("src", `//openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
-let apiKey = "30e0e5bb453abedea9e4644fe840ec2e";
-let apiUrl = `//api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}&units=metric`;
+function ajaxCall(city){
+  let apiKey = "30e0e5bb453abedea9e4644fe840ec2e";
+  let apiUrl = `//api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(weatherResponse);
+}
+ajaxCall("new york");
 
-axios.get(apiUrl).then(weatherResponse);
+//* feature 2: display the city name
+function search(event) {
+  if (event.keyCode === 13) {
+    // key code of the keybord key
+    event.preventDefault();
+    let searchInput = document.querySelector("#search-text-input");
+    ajaxCall(searchInput.value);
+  }
+}
+let container = document.querySelector("#search-container");
+container.addEventListener("keypress", search);
