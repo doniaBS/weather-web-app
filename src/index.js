@@ -52,6 +52,8 @@ function weatherResponse(response) {
   let humidityResponse = document.querySelector("#humidity");
   let windResponse = document.querySelector("#wind");
   let imageWeather = document.querySelector("#weather-img");
+  let sunriseResponse = document.querySelector("#sunrise");
+  let sunsetResponse = document.querySelector("#sunset");
   celciusTemp = response.data.main.temp;
   temperatureResponse.innerHTML = Math.round(celciusTemp);
   cityResponse.innerHTML = response.data.name;
@@ -59,6 +61,25 @@ function weatherResponse(response) {
   humidityResponse.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   windResponse.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}Km/H`;
   imageWeather.setAttribute("src", `//openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  sunriseResponse.innerHTML = sunrise(formattedTimeSunrise);
+  sunsetResponse.innerHTML = sunsetFormat(formattedTimeSunset);
+  function sunriseFormat(){
+    let sunriseApi = response.data.sys.sunrise;
+    let date = new Date(sunriseApi * 1000);
+    let hours = date.getHours();
+    let minutes = "0" + date.getMinutes();
+    let seconds = "0" + date.getSeconds();
+    let formattedTimeSunrise = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+  }return formattedTimeSunrise;
+  function sunsetFormat(){
+    let sunsetApi = response.data.sys.sunset;
+    let date = new Date(sunsetApi * 1000);
+    let hours = date.getHours();
+    let minutes = "0" + date.getMinutes();
+    let seconds = "0" + date.getSeconds();
+    let formattedTimeSunset = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+  }return formattedTimeSunset;
+  
 }
 function ajaxCall(city){
   let apiKey = "30e0e5bb453abedea9e4644fe840ec2e";
