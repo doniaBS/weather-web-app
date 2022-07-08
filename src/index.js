@@ -52,7 +52,8 @@ function weatherResponse(response) {
   let humidityResponse = document.querySelector("#humidity");
   let windResponse = document.querySelector("#wind");
   let imageWeather = document.querySelector("#weather-img");
-  temperatureResponse.innerHTML = Math.round(response.data.main.temp);
+  celciusTemp = response.data.main.temp;
+  temperatureResponse.innerHTML = Math.round(celciusTemp);
   cityResponse.innerHTML = response.data.name;
   descriptionResponse.innerHTML = response.data.weather[0].description;
   humidityResponse.innerHTML = `Humidity: ${response.data.main.humidity}%`;
@@ -64,7 +65,7 @@ function ajaxCall(city){
   let apiUrl = `//api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(weatherResponse);
 }
-ajaxCall("new york");
+
 
 //* feature 2: display the city name
 function search(event) {
@@ -77,3 +78,27 @@ function search(event) {
 }
 let container = document.querySelector("#search-container");
 container.addEventListener("keypress", search);
+
+//# conversion temperature feature
+function showFahrenheitTemp(event){
+event.preventDefault();
+let fahrenheitTemp = (celciusTemp * 9) / 5 + 32;
+let temperatureResponse = document.querySelector("#temperature");
+//# pass the active class from celcius to fahrenheit
+celcius.classList.remove("active");
+fahrenheit.classList.add("active");
+temperatureResponse.innerHTML = Math.round(fahrenheitTemp);
+}
+function showCelciusTemp(event){
+event.preventDefault();
+let temperatureResponse = document.querySelector("#temperature");
+celcius.classList.add("active");
+fahrenheit.classList.remove("active");
+temperatureResponse.innerHTML = Math.round(celciusTemp);
+}
+let celciusTemp = null;
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", showFahrenheitTemp);
+let celcius = document.querySelector("#celcius");
+celcius.addEventListener("click", showCelciusTemp);
+ajaxCall("new york");

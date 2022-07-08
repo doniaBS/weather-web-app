@@ -61,6 +61,16 @@ body {
   position: relative;
   bottom: 15%;
 }
+.temperture-header .active{
+  color : #fff;
+  cursor: default;
+}
+.temperture-header .active:hover{
+  text-decoration: none;
+}
+.temperture-header a{
+  color: #ec6e4c;
+}
 .humidity-header{
   font-size: 100%;
   font-family: "Inter", sans-serif;
