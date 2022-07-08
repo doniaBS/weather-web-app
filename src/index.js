@@ -69,61 +69,7 @@ function weatherResponse(response) {
   humidityResponse.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   windResponse.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}Km/H`;
 //# change the image for each weather description
-  switch (response.data.weather[0].description) {
-    case "clear sky":
-      imageWeather.setAttribute(
-        "src",
-        "//openweathermap.org/img/wn/01d@2x.png"
-      );
-      break;
-    case "few clouds":
-      imageWeather.setAttribute(
-        "src",
-        "//openweathermap.org/img/wn/02d@2x.png"
-      );
-      break;
-    case "scattered clouds":
-      imageWeather.setAttribute(
-        "src",
-        "//openweathermap.org/img/wn/03d@2x.png"
-      );
-      break;
-    case "broken clouds":
-      imageWeather.setAttribute(
-        "src",
-        "//openweathermap.org/img/wn/04d@2x.png"
-      );
-      break;
-    case "shower rain":
-      imageWeather.setAttribute(
-        "src",
-        "http://openweathermap.org/img/wn/09d@2x.png"
-      );
-      break;
-    case "rain":
-      imageWeather.setAttribute(
-        "src",
-        "//openweathermap.org/img/wn/10d@2x.png"
-      );
-      break;
-    case "thunderstorm":
-      imageWeather.setAttribute(
-        "src",
-        "//openweathermap.org/img/wn/11d@2x.png"
-      );
-      break;
-    case "snow":
-      imageWeather.setAttribute(
-        "src",
-        "//openweathermap.org/img/wn/13d@2x.png"
-      );
-      break;
-    case "mist":
-      imageWeather.setAttribute(
-        "src",
-        "//openweathermap.org/img/wn/50d@2x.png"
-      );
-  }
+  imageWeather.setAttribute("src", `//openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 let apiKey = "30e0e5bb453abedea9e4644fe840ec2e";
 let apiUrl = `//api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}&units=metric`;

@@ -39,7 +39,7 @@ body {
 /* header part */
 .weather-header {
   width: 80%;
-  height: 0%;
+  height: 90%;
  padding: 0;
 }
 .value-header {
